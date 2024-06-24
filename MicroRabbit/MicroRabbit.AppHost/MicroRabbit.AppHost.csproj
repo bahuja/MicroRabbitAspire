@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>f2732d54-d11f-4722-b103-928091205b37</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MacroRabbit.MigrationService\MacroRabbit.MigrationService.csproj" />
+    <ProjectReference Include="..\MicroRabbit.Banking.ApiNew\MicroRabbit.Banking.ApiNew.csproj" />
+    <ProjectReference Include="..\MicroRabbit.MvcNew\MicroRabbit.MvcNew.csproj" />
+    <ProjectReference Include="..\MicroRabbit.Transfer.ApiNew\MicroRabbit.Transfer.ApiNew.csproj" />
+  </ItemGroup>
+
+</Project>
