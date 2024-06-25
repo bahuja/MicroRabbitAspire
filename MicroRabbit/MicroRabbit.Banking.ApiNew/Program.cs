@@ -1,24 +1,11 @@
 using MicroRabbit.Banking.Data.Context;
-using MicroRabbit.Banking.Domain.CommandHandlers;
-using MicroRabbit.Banking.Domain.Commands;
-using MicroRabbit.Domain.Core.Bus;
 using MicroRabbit.Infra.IoC;
-using MicroRabbit.Transfer.Domain.EventHandlers;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using System.Reflection;
-using static Microsoft.IO.RecyclableMemoryStreamManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-//builder.AddSqlServerClient("sqldb");
-
-//builder.Services.AddDbContext<BankingDbContext>(options =>
-//{
-//    options.UseSqlServer("BankingDb");
-//});
 builder.AddSqlServerDbContext<BankingDbContext>("BankingDb");
 
 // Add services to the container.
