@@ -6,7 +6,9 @@ using MicroRabbit.Infra.IoC;
 using MicroRabbit.Transfer.Domain.EventHandlers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using RabbitMQ.Client;
 using System.Reflection;
+using static Microsoft.IO.RecyclableMemoryStreamManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +28,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-builder.AddRabbitMQClient("eventbus");
+builder.AddRabbitMQClient("eventbus", configureConnectionFactory: factory =>
+{
+    ((ConnectionFactory)factory).DispatchConsumersAsync = true;
+});
 RegisterServices(builder.Services);
 var app = builder.Build();
 

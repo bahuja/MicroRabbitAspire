@@ -17,6 +17,7 @@ using MicroRabbit.TransferData.Context;
 using MicroRabbit.Transfer.Domain.Events;
 using MicroRabbit.Transfer.Domain.EventHandlers;
 using RabbitMQ.Client;
+using Microsoft.Extensions.Hosting;
 
 namespace MicroRabbit.Infra.IoC
 {
@@ -32,13 +33,11 @@ namespace MicroRabbit.Infra.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            //services.AddTransient<IConnection>();
             // Domain Bus
-            services.AddTransient<IEventBus, RabbitMQBus>(sp =>
+            services.AddSingleton<IEventBus, RabbitMQBus>(sp =>
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory, sp.GetService<IConnection>());
-                //return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory, sp.GetKeyedService<IConnection>("eventbus"));
             });
 
             // Subscriptions

@@ -4,6 +4,8 @@ using MicroRabbit.Infra.IoC;
 using MicroRabbit.Transfer.Domain.EventHandlers;
 using MicroRabbit.Transfer.Domain.Events;
 using MicroRabbit.TransferData.Context;
+using RabbitMQ.Client;
+
 //using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -23,7 +25,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-builder.AddRabbitMQClient("eventbus");
+builder.AddRabbitMQClient("eventbus", configureConnectionFactory: factory =>
+{
+    ((ConnectionFactory)factory).DispatchConsumersAsync = true;
+});
 RegisterServices(builder.Services);
 var app = builder.Build();
 
