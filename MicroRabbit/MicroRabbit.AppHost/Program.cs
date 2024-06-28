@@ -1,5 +1,3 @@
-using Aspire.Hosting;
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var rabbitMq = builder.AddRabbitMQ("eventbus");
@@ -14,10 +12,6 @@ builder.AddProject<Projects.MacroRabbit_MigrationService>("macrorabbit-migration
 var transferApi = builder.AddProject<Projects.MicroRabbit_Transfer_ApiNew>("microrabbit-transfer-apinew")
     .WithReference(TransferDb)
     .WithReference(rabbitMq);
-
-
-
-
 
 var bankingApi = builder.AddProject<Projects.MicroRabbit_Banking_ApiNew>("microrabbit-banking-apinew")
     .WithReference(BankingDb)
