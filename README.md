@@ -1,43 +1,78 @@
-# [.NET Core Microservices with RabbitMQ](https://github.com/dpedwards/dotnet-core-micro-rabbit)
+
 
 [![.NET 8](https://img.shields.io/badge/dotnet-8-blue.svg)](https://dotnet.microsoft.com/download)
 [![swagger](https://img.shields.io/badge/swagger-lightgreen.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-orange.svg)](https://www.rabbitmq.com/download.html)
 [![Aspire](https://img.shields.io/badge/Aspire-blue.svg)](https://learn.microsoft.com/en-us/dotnet/aspire/)
 
-.NET Core Microservice architecture design pattern with RabbitMQ messaging
+.NET Core Microservice architecture with Aspire Dashboard  all Implemented required design pattern with RabbitMQ messaging and sql Server  
+
+![image](https://github.com/bahuja/MicroRabbitAspire/assets/15103972/4b019197-8c9f-474d-a64f-d53974cebf7b)
+
 
 ![](MicroRabbit/images/.NET_Core_Microservices_(RabbitMQ_EventBus).png)
 
 ## Projects
-
-- MicroRabbit.Domain.Core
-- MicroRabbit.Infra.Bus
-- MicroRabbit.Infra.IoC
+### Dot Net Aspire Projects
+- MicroRabbit.AppHost
+- MicroRabbit.ServiceDefault
+### Web Mvc Projects
+- MicroRabbit.MVCNew
+### Db Migration Service Project
+- MicroRabbit.MigrationService
+### Dot Net API Projects
 - MicroRabbit.Banking.ApiNew
+- MicroRabbit.Transfer.ApiNew
+### Dependent Class Libraries
 - MicroRabbit.Banking.Application
 - MicroRabbit.Banking.Data
 - MicroRabbit.Banking.Domain
-- MicroRabbit.Transfer.ApiNew
+  
+- MicroRabbit.Domain.Core
+- MicroRabbit.Infra.Bus
+- MicroRabbit.Infra.IoC
+
+
+
 - MicroRabbit.Transfer.Application
 - MicroRabbit.Transfer.Data
 - MicroRabbit.Transfer.Domain
-- MicroRabbit.MVCNew
+
 
 ## Notable features
 
+- .Net Aspire Dashboard
+- 
+- Service Discovery
+- Orchestration
 - Microservice architecture design pattern
+- MediatR Pattern
+- Retry Pattern
 - RabbitMQ messaging
+- DB Migration Services
 
+
+
+### Requirements
+
+- [Visual Studio 17.10.1 or Later](https://visualstudio.microsoft.com/de/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET 8](https://dotnet.microsoft.com/download)
+
+- Podman Desktop or Docker Desktop
 ## Project notes
 
-- **MicroRabbit.Banking.Api** project is listening on localhost port `5001` (https) and `5000` (http)
+-  In order to run this project, You need to make sure podman or docker desktop is running on your machine.
+-  - run following commands
+  ` .net workload install aspire `   `and ` .net workload update `
+
+-  Run MicroRabbit.AppHost project, it will open a dashboad where all the endpoin for following services
+- **MicroRabbit.Banking.ApiNew** project is listening on localhost (https) and  (http)
 ![](MicroRabbit/images/Banking_Microservice_Swagger_UI.png)
 
-- **MicroRabbit.Transfer.Api** project is listening on localhost port `5003` (https) and `5002` (http)
+- **MicroRabbit.Transfer.ApiNew** project is listening on localhost port  (https) and  (http)
 ![](MicroRabbit/images/Transfer_Microservice_Swagger_UI.png)
 
-- **MicroRabbit.MVC** project is listeing on localhost port `5005` (https) and `5004` (http)
+- **MicroRabbit.MVCNew** project is listeing on localhost  (https) and  (http)
 ![](MicroRabbit/images/Banking_Microservice_MVC.png)
 
 ### Installation
@@ -46,50 +81,25 @@ Check if .NET 8 + and PODMAN/DOCKER is installed on your machine.
 
 ---
 
-
-### Requirements
-
-- [Visual Studio](https://visualstudio.microsoft.com/de/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
-- [.NET 8](https://dotnet.microsoft.com/download)
-- [SQL Server](https://www.microsoft.com/de-de/sql-server/sql-server-downloads)
-
 ### Packages:
 
-- [Microsoft.NETCore.App](https://dotnet.microsoft.com/)
-- [MediatR](https://github.com/jbogard/MediatR)
-- [Microsoft.Extensions.DependencyInjection](https://dotnet.microsoft.com/apps/aspnet)
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-- [RabbitMQ.Client](https://www.rabbitmq.com/dotnet.html)
-- [Microsoft.AspNetCore.Razor.Design](https://dotnet.microsoft.com/apps/aspnet)
-- [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
-- [Microsoft.EntityFrameworkCore](https://docs.microsoft.com/de-de/ef/core/)
-- [Microsoft.EntityFrameworkCore.Design](https://docs.microsoft.com/de-de/ef/core/)
-- [Microsoft.EntityFrameworkCore.SqlServer](https://docs.microsoft.com/de-de/ef/core/)
-- [Microsoft.EntityFrameworkCore.Tools](https://docs.microsoft.com/de-de/ef/core/)
+- Aspire.Hosting.AppHost 
+- Aspire.Hosting.RabbitMQ
+- Aspire.Hosting.SqlServer
+- Aspire.Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.Extensions.Hosting
+- Aspire.Microsoft.Data.SqlClient
+- Microsoft.Extensions.DependencyInjection
+- MediatR
+- Aspire.RabbitMQ.Client
+- Swashbuckle.AspNetCore
+- Microsoft.Extensions.Http.Resilience" Version=
+- Microsoft.Extensions.ServiceDiscovery" Version
+- OpenTelemetry.Exporter.OpenTelemetryProtocol" 
+- OpenTelemetry.Extensions.Hosting
+- OpenTelemetry.Instrumentation.AspNetCore
+- OpenTelemetry.Instrumentation.Http
+- OpenTelemetry.Instrumentation.Runtime
 
----
 
-## License
-
-MIT License
-
-Copyright (c) 2019 Davain Pablo Edwards
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
