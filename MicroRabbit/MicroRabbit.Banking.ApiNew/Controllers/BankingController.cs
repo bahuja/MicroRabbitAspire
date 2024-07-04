@@ -4,8 +4,6 @@ using MicroRabbit.Banking.Domain.Models;
 using MicroRabbit.Banking.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MicroRabbit.Banking.Application.Models;
-using Microsoft.AspNetCore.Authorization;
-using Auth0.AspNetCore.Authentication;
 
 namespace MicroRabbit.Banking.Api.Controllers
 {
@@ -30,14 +28,12 @@ namespace MicroRabbit.Banking.Api.Controllers
 
         // GET api/banking
         [HttpGet]
-        [Authorize("read:messages")]
         public ActionResult<IEnumerable<Account>> Get()
         {
             return Ok(_accountService.GetAccounts());
         }
 
         [HttpPost]
-        [Authorize("read:messages")]
         public IActionResult Post([FromBody] AccountTransfer accountTransfer)
         {
             _accountService.Transfer(accountTransfer);
