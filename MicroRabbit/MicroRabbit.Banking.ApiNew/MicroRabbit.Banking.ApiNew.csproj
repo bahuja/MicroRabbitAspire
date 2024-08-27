@@ -11,6 +11,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer"></PackageReference>
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.0.1"></PackageReference>
+    
   </ItemGroup>
 
   <ItemGroup>

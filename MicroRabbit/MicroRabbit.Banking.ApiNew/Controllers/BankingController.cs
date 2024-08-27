@@ -4,6 +4,7 @@ using MicroRabbit.Banking.Domain.Models;
 using MicroRabbit.Banking.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MicroRabbit.Banking.Application.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MicroRabbit.Banking.Api.Controllers
 {
@@ -34,6 +35,7 @@ namespace MicroRabbit.Banking.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AuthZPolicy")]
         public IActionResult Post([FromBody] AccountTransfer accountTransfer)
         {
             _accountService.Transfer(accountTransfer);

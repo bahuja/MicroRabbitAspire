@@ -4,25 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using MicroRabbit.MVC.Models;
 using MicroRabbit.MVC.Services;
 using MicroRabbit.MVC.Models.DTO;
+using Microsoft.Identity.Web;
+using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MicroRabbit.MVC.Controllers
 {
-    /**
-     * Home api controller
-     * 
-     * @author D. P. Edwards
-     * @license MIT
-     * @version 1.0
-     */ 
-    public class HomeController : Controller
+
+    public class HomeController(ITransferService transferService) : Controller
     {
-        private readonly ITransferService _transferService;
+        private readonly ITransferService _transferService = transferService;
 
-        public HomeController(ITransferService transferService)
-        {
-            _transferService = transferService;
-        }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -39,7 +32,7 @@ namespace MicroRabbit.MVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IActionResult> Transfer(TransferViewModel model)
         {
             TransferDto transferDto = new TransferDto()
